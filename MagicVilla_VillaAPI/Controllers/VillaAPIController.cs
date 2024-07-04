@@ -1,4 +1,5 @@
 ﻿using MagicVilla_VillaAPI.Data;
+using MagicVilla_VillaAPI.Loger;
 using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.DTOs;
 using Microsoft.AspNetCore.JsonPatch;
@@ -12,6 +13,29 @@ namespace MagicVilla_VillaAPI.Controllers
     [ApiController]
     public class VillaAPIController : ControllerBase
     {
+        /*
+         * Using Serilog Logging
+        private ILogger<VillaAPIController> _logger { get; }
+
+
+        public VillaAPIController(ILogger<VillaAPIController> logger)
+        {
+            _logger = logger;
+        }
+
+        */
+
+
+        private ILogging _logger { get; }
+
+
+        public VillaAPIController(ILogging logger)
+        {
+            _logger = logger;
+        }
+
+
+
 
         /*
          IEnumerable<T> is an interface that tells us that we can enumerate over a sequence of T instances.
@@ -28,6 +52,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [HttpGet]
         public IActionResult GetVillas()
         {
+            _logger.Log("Getting All Villas", "");
             return Ok(Villas.villas);
         }
 
@@ -43,6 +68,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(typeof(VillaDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(VillaDTO), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(VillaDTO), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(VillaDTO), StatusCodes.Status406NotAcceptable)]
         public IActionResult GetVilla(int id)
         {
 
@@ -52,7 +78,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 return BadRequest();
             else if (villa == null)
                 return NotFound();
-
+            _logger.Log($"Villa {villa.Id}", "");
             return Ok(villa);
         }
 
