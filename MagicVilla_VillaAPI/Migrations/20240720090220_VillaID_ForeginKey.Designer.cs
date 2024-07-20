@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240706144507_Seeding-Data")]
-    partial class SeedingData
+    [Migration("20240720090220_VillaID_ForeginKey")]
+    partial class VillaID_ForeginKey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,132 +73,210 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "Pool, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6040),
                             Details = "A beautiful seaside villa with stunning ocean views.",
                             ImageURL = "https://example.com/seasidevilla.jpg",
                             Name = "Seaside Villa",
                             Occupancy = 8,
                             Rate = 450.0,
                             Sqft = 3200,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6083)
                         },
                         new
                         {
                             Id = 2,
                             Amenity = "Fireplace, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6088),
                             Details = "A cozy retreat nestled in the mountains.",
                             ImageURL = "https://example.com/mountainretreat.jpg",
                             Name = "Mountain Retreat",
                             Occupancy = 6,
                             Rate = 300.0,
                             Sqft = 2000,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6090)
                         },
                         new
                         {
                             Id = 3,
                             Amenity = "Pool, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6093),
                             Details = "A luxurious villa located in the heart of the city.",
                             ImageURL = "https://example.com/urbanoasis.jpg",
                             Name = "Urban Oasis",
                             Occupancy = 4,
                             Rate = 500.0,
                             Sqft = 2500,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6094)
                         },
                         new
                         {
                             Id = 4,
                             Amenity = "WiFi, AC, BBQ",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6097),
                             Details = "An oasis in the desert with all modern amenities.",
                             ImageURL = "https://example.com/deserthaven.jpg",
                             Name = "Desert Haven",
                             Occupancy = 7,
                             Rate = 350.0,
                             Sqft = 2800,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6099)
                         },
                         new
                         {
                             Id = 5,
                             Amenity = "Pool, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6101),
                             Details = "A stunning tropical villa with lush gardens.",
                             ImageURL = "https://example.com/tropicalparadise.jpg",
                             Name = "Tropical Paradise",
                             Occupancy = 5,
                             Rate = 400.0,
                             Sqft = 3000,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6103)
                         },
                         new
                         {
                             Id = 6,
                             Amenity = "WiFi, AC, Kayaks",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6106),
                             Details = "A serene villa by the lake with picturesque views.",
                             ImageURL = "https://example.com/lakesidelodge.jpg",
                             Name = "Lakeside Lodge",
                             Occupancy = 6,
                             Rate = 375.0,
                             Sqft = 2700,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6107)
                         },
                         new
                         {
                             Id = 7,
                             Amenity = "Fireplace, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6110),
                             Details = "A peaceful hideaway surrounded by forest.",
                             ImageURL = "https://example.com/foresthideaway.jpg",
                             Name = "Forest Hideaway",
                             Occupancy = 4,
                             Rate = 325.0,
                             Sqft = 2300,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6112)
                         },
                         new
                         {
                             Id = 8,
                             Amenity = "Pool, WiFi, AC",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6115),
                             Details = "A charming bungalow right on the beach.",
                             ImageURL = "https://example.com/beachfrontbungalow.jpg",
                             Name = "Beachfront Bungalow",
                             Occupancy = 7,
                             Rate = 425.0,
                             Sqft = 3100,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6116)
                         },
                         new
                         {
                             Id = 9,
                             Amenity = "WiFi, AC, Garden",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6119),
                             Details = "A quaint cottage in the countryside.",
                             ImageURL = "https://example.com/countrysidecottage.jpg",
                             Name = "Countryside Cottage",
                             Occupancy = 3,
                             Rate = 275.0,
                             Sqft = 1800,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6121)
                         },
                         new
                         {
                             Id = 10,
                             Amenity = "Pool, WiFi, AC, Library",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6123),
                             Details = "A grand historic manor with timeless elegance.",
                             ImageURL = "https://example.com/historicmanor.jpg",
                             Name = "Historic Manor",
                             Occupancy = 10,
                             Rate = 550.0,
                             Sqft = 4000,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6125)
                         });
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
+                {
+                    b.Property<int>("VillaNo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SpecialDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VillaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("VillaNo");
+
+                    b.HasIndex("VillaID");
+
+                    b.ToTable("VillaNumbers");
+
+                    b.HasData(
+                        new
+                        {
+                            VillaNo = 2,
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6241),
+                            SpecialDetails = " Very Good Villa ",
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6244),
+                            VillaID = 1
+                        },
+                        new
+                        {
+                            VillaNo = 3,
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6248),
+                            SpecialDetails = " Very Good Villa ",
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6249),
+                            VillaID = 2
+                        },
+                        new
+                        {
+                            VillaNo = 4,
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6252),
+                            SpecialDetails = " Very Good Villa ",
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6253),
+                            VillaID = 3
+                        },
+                        new
+                        {
+                            VillaNo = 5,
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6256),
+                            SpecialDetails = " Very Good Villa ",
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6257),
+                            VillaID = 4
+                        },
+                        new
+                        {
+                            VillaNo = 6,
+                            CreatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6259),
+                            SpecialDetails = " Very Good Villa ",
+                            UpdatedDate = new DateTime(2024, 7, 20, 12, 2, 20, 375, DateTimeKind.Local).AddTicks(6261),
+                            VillaID = 5
+                        });
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
+                {
+                    b.HasOne("MagicVilla_VillaAPI.Models.Villa", "Villa")
+                        .WithMany()
+                        .HasForeignKey("VillaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }

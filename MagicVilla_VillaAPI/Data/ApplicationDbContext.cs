@@ -9,6 +9,7 @@ namespace MagicVilla_VillaAPI.Data
 
 
         public DbSet<Villa> Villas { get; set; }
+        public DbSet<VillaNumber> VillaNumbers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -153,6 +154,50 @@ namespace MagicVilla_VillaAPI.Data
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
             });
+
+
+            modelBuilder.Entity<VillaNumber>().HasData(
+            new VillaNumber
+            {
+                VillaNo = 2,
+                VillaID = 1 , 
+                SpecialDetails = " Very Good Villa ",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+            new VillaNumber
+            {
+                VillaNo = 3,
+                VillaID = 2 ,
+                SpecialDetails = " Very Good Villa ",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+            new VillaNumber
+            {
+                VillaNo = 4,
+                VillaID = 3 ,
+                SpecialDetails = " Very Good Villa ",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+            new VillaNumber
+            {
+                VillaNo = 5,
+                VillaID = 4 ,
+                SpecialDetails = " Very Good Villa ",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+            new VillaNumber
+            {
+                VillaNo = 6,
+                VillaID = 5 ,
+                SpecialDetails = " Very Good Villa ",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            } );
+
         }
     }
 }
