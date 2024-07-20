@@ -33,7 +33,7 @@ namespace MagicVilla_VillaAPI.Controllers
             try
             {
                 IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
-                _response.Result = _mapper.Map<List<VillaUpdateDTO>>(villaList);
+                _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
                 _response.StatusCode = System.Net.HttpStatusCode.OK;
 
 
@@ -66,7 +66,7 @@ namespace MagicVilla_VillaAPI.Controllers
                     return BadRequest();
                 else if (model == null)
                     return NotFound();
-                _response.Result = _mapper.Map<VillaUpdateDTO>(model);
+                _response.Result = _mapper.Map<VillaDTO>(model);
                 _response.StatusCode = System.Net.HttpStatusCode.OK;
 
                 return Ok(_response);
