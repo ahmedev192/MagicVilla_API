@@ -8,7 +8,7 @@ namespace MagicVilla_Web.Services
 {
     public class BaseService : IBaseService
     {
-        public ApiResponse responseModel { get; set; }
+        public APIResponse responseModel { get; set; }
         public IHttpClientFactory httpClient;
         public BaseService(IHttpClientFactory httpClient)
         {
@@ -16,7 +16,7 @@ namespace MagicVilla_Web.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<T> SendAsync<T>(ApiRequest apiRequest)
+        public async Task<T> SendAsync<T>(APIRequest apiRequest)
         {
             try
             {
@@ -40,6 +40,9 @@ namespace MagicVilla_Web.Services
                     case SD.APIType.Delete:
                         message.Method = HttpMethod.Delete;
                         break;
+                    default:
+                        message.Method = HttpMethod.Get;
+                        break;
                 }
 
                 HttpResponseMessage apiResponse = null;
@@ -52,7 +55,7 @@ namespace MagicVilla_Web.Services
             }
             catch (Exception ex)
             {
-                var dto = new ApiResponse
+                var dto = new APIResponse
                 {
                     ErrorMessages = new List<string> { ex.ToString() },
                     IsSuccess = false

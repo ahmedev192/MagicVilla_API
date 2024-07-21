@@ -17,7 +17,7 @@ namespace MagicVilla_Web.Services
         }
         public Task<T> CreateAsync<T>(VillaCreateDTO dto)
         {
-            return SendAsync<T>(new ApiRequest()
+            return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.APIType.POST,
                 Data = dto ,
@@ -27,7 +27,7 @@ namespace MagicVilla_Web.Services
 
         public Task<T> GetAllAsync<T>()
         {
-            return SendAsync<T>(new ApiRequest()
+            return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.APIType.GET,
                 ApiUrl = villaURL + "/api/VillaAPI"
@@ -36,7 +36,7 @@ namespace MagicVilla_Web.Services
 
         public Task<T> GetAsync<T>(int id)
         {
-            return SendAsync<T>(new ApiRequest()
+            return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.APIType.GET,
                 Data = id,
@@ -46,7 +46,7 @@ namespace MagicVilla_Web.Services
 
         public Task<T> RemoveAsync<T>(int id)
         {
-            return SendAsync<T>(new ApiRequest()
+            return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.APIType.Delete,
                 Data = id,
@@ -56,7 +56,7 @@ namespace MagicVilla_Web.Services
 
         public Task<T> UpdateAsync<T>(VillaUpdateDTO dto)
         {
-            return SendAsync<T>(new ApiRequest()
+            return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.APIType.PUT,
                 Data = dto,
