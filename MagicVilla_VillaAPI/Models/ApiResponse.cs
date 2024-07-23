@@ -2,20 +2,20 @@
 
 namespace MagicVilla_VillaAPI.Models
 {
-    public class ApiResponse
+    public class APIResponse
     {
         public HttpStatusCode StatusCode { get; set; }
         public bool IsSuccess { get; set; }
         public List<string> ErrorMessages { get; set; }
         public object Result { get; set; }
 
-        public ApiResponse()
+        public APIResponse()
         {
             ErrorMessages = new List<string>();
             IsSuccess = true;
         }
 
-        public ApiResponse(HttpStatusCode statusCode, bool isSuccess, object result = null, List<string> errorMessages = null)
+        public APIResponse(HttpStatusCode statusCode, bool isSuccess, object result = null, List<string> errorMessages = null)
         {
             StatusCode = statusCode;
             IsSuccess = isSuccess;
