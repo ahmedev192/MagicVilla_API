@@ -29,7 +29,15 @@ namespace MagicVilla_Web.Services
                     Method = GetHttpMethod(apiRequest.ApiType),
                     Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data), Encoding.UTF8, "application/json")
                 };
+
+
                 requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+                if (!string.IsNullOrEmpty(apiRequest.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
 
                 var response = await client.SendAsync(requestMessage);
                 var responseContent = await response.Content.ReadAsStringAsync();

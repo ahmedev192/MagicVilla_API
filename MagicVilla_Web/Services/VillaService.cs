@@ -17,50 +17,60 @@ namespace MagicVilla_Web.Services
             _villaURL = configuration.GetValue<string>("ServiceUrls:VillaAPI");
         }
 
-        public Task<T> CreateAsync<T>(VillaCreateDTO dto)
+        public Task<T> CreateAsync<T>(VillaCreateDTO dto, string token)
         {
             return SendAsync<T>(new APIRequest
             {
                 ApiType = SD.APIType.POST,
                 Data = dto,
-                ApiUrl = $"{_villaURL}/api/VillaAPI"
+                ApiUrl = $"{_villaURL}/api/VillaAPI",
+                Token = token
+
             });
         }
 
-        public Task<T> GetAllAsync<T>()
+        public Task<T> GetAllAsync<T>(string token)
         {
             return SendAsync<T>(new APIRequest
             {
                 ApiType = SD.APIType.GET,
-                ApiUrl = $"{_villaURL}/api/VillaAPI"
+                ApiUrl = $"{_villaURL}/api/VillaAPI",
+                Token = token
+
             });
         }
 
-        public Task<T> GetAsync<T>(int id)
+        public Task<T> GetAsync<T>(int id, string token)
         {
             return SendAsync<T>(new APIRequest
             {
                 ApiType = SD.APIType.GET,
-                ApiUrl = $"{_villaURL}/api/VillaAPI/{id}"
+                ApiUrl = $"{_villaURL}/api/VillaAPI/{id}",
+                Token = token
+
             });
         }
 
-        public Task<T> RemoveAsync<T>(int id)
+        public Task<T> RemoveAsync<T>(int id, string token)
         {
             return SendAsync<T>(new APIRequest
             {
                 ApiType = SD.APIType.DELETE,
-                ApiUrl = $"{_villaURL}/api/VillaAPI/{id}"
+                ApiUrl = $"{_villaURL}/api/VillaAPI/{id}",
+                Token = token
+
             });
         }
 
-        public Task<T> UpdateAsync<T>(VillaUpdateDTO dto)
+        public Task<T> UpdateAsync<T>(VillaUpdateDTO dto, string token)
         {
             return SendAsync<T>(new APIRequest
             {
                 ApiType = SD.APIType.PUT,
                 Data = dto,
-                ApiUrl = $"{_villaURL}/api/VillaAPI/{dto.Id}"
+                ApiUrl = $"{_villaURL}/api/VillaAPI/{dto.Id}",
+                Token = token
+
             });
         }
     }
