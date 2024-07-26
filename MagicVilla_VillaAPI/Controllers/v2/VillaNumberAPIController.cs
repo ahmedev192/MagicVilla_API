@@ -11,8 +11,9 @@ using System.Net;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/v{version:apiVersion}/[Controller]")]
     [ApiController]
+    [ApiVersion("2.0")]
     public class VillaNumberAPIController : ControllerBase
     {
         protected APIResponse _response;
@@ -29,6 +30,8 @@ namespace MagicVilla_VillaAPI.Controllers
         }
 
         [HttpGet]
+        [MapToApiVersion("2.0")]
+
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
             try
@@ -49,6 +52,12 @@ namespace MagicVilla_VillaAPI.Controllers
             }
         }
 
+
+
+
+
+
+        [MapToApiVersion("2.0")]
         [HttpGet("{villaNumber:int}", Name = "GetVillaNumber")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -88,6 +97,7 @@ namespace MagicVilla_VillaAPI.Controllers
             }
         }
 
+        [MapToApiVersion("2.0")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -152,6 +162,7 @@ namespace MagicVilla_VillaAPI.Controllers
         }
 
 
+        [MapToApiVersion("2.0")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -195,6 +206,8 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [MapToApiVersion("2.0")]
+
         public async Task<ActionResult<APIResponse>> UpdateVillaNumber(int villaNumber, [FromBody] VillaNumberUpdateDTO villaDTO)
         {
             if (villaNumber <= 0 || villaDTO.VillaNumber != villaNumber || villaDTO == null)

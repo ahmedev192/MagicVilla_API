@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace MagicVilla_VillaAPI.Controllers
+namespace MagicVilla_VillaAPI.Controllers.v2
 {
-    [Route("api/[Controller]")]
+    [Route("api/v{version:apiVersion}/[Controller]")]
     [ApiController]
+    [ApiVersion("2.0")]
+
     public class VillaAPIController : ControllerBase
     {
         protected APIResponse _response;
@@ -208,7 +210,7 @@ namespace MagicVilla_VillaAPI.Controllers
                     return BadRequest(_response);
                 }
 
-                var existingVilla = await _dbVilla.GetAsync(u => u.Id == id, tracked:false);
+                var existingVilla = await _dbVilla.GetAsync(u => u.Id == id, tracked: false);
                 if (existingVilla == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;

@@ -7,8 +7,9 @@ using System.Net;
 namespace MagicVilla_VillaAPI.Controllers
 {
 
-    [Route("api/UserAuth")]
+    [Route("api/v{version:apiVersion}/UserAuth")]
     [ApiController]
+    [ApiVersionNeutral]
     public class UserAPIController : Controller
     {
         private readonly IUserRepository _userRepo;
@@ -16,7 +17,7 @@ namespace MagicVilla_VillaAPI.Controllers
         public UserAPIController(IUserRepository userRepo)
         {
             _userRepo = userRepo;
-            this._response = new();
+            _response = new();
         }
 
         [HttpPost("login")]
@@ -24,7 +25,7 @@ namespace MagicVilla_VillaAPI.Controllers
         {
             var loginResponse = await _userRepo.Login(model);
             if (loginResponse.User == null || string.IsNullOrEmpty(loginResponse.Token))
-            { 
+            {
                 _response.StatusCode = HttpStatusCode.BadRequest;
                 _response.IsSuccess = false;
                 _response.ErrorMessages.Add("Username or password is incorrect");

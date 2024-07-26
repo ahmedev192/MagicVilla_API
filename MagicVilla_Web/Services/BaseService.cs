@@ -52,6 +52,7 @@ namespace MagicVilla_Web.Services
                     if (errorResponse != null)
                     {
                         errorResponse.StatusCode = response.StatusCode;
+                        errorResponse.IsSuccess = false;
                         return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(errorResponse));
                     }
                     else
