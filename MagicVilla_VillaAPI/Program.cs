@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+builder.Services.AddResponseCaching();
 
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
@@ -43,6 +44,7 @@ builder.Services.AddVersionedApiExplorer(options =>
 builder.Services.AddControllers(option =>
 {
     option.ReturnHttpNotAcceptable = false;
+    option.CacheProfiles.Add("Default Cache", new CacheProfile() { Duration = 30 });
 
 }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -86,8 +88,8 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    options.SwaggerDoc("v1" , new OpenApiInfo { Version = "V1.0", Title = "Magic Villa" , Description = "API to manage Villa" , TermsOfService = new Uri("https://example.com/terms ") });
-    options.SwaggerDoc("v2" , new OpenApiInfo { Version = "V2.0", Title = "Magic Villa v2" , Description = "API to manage Villa v2" , TermsOfService = new Uri("https://example.com/terms ") });
+    options.SwaggerDoc("v1", new OpenApiInfo { Version = "V1.0", Title = "Magic Villa", Description = "API to manage Villa", TermsOfService = new Uri("https://example.com/terms ") });
+    options.SwaggerDoc("v2", new OpenApiInfo { Version = "V2.0", Title = "Magic Villa v2", Description = "API to manage Villa v2", TermsOfService = new Uri("https://example.com/terms ") });
 });
 
 

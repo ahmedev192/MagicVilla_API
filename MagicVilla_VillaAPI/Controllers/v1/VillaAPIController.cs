@@ -5,6 +5,7 @@ using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 using System.Net;
 
 namespace MagicVilla_VillaAPI.Controllers.v1
@@ -24,18 +25,32 @@ namespace MagicVilla_VillaAPI.Controllers.v1
             _mapper = mapper;
             _response = new APIResponse();
         }
-
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<APIResponse>> GetVillas()
+        public async Task<ActionResult<APIResponse>> GetVillas(
+            [FromQuery(Name = "name")] string name,
+            [FromQuery(Name = "details")] string details,
+            [FromQuery(Name = "rate")] double? rate,
+            [FromQuery(Name = "sqft")] int? sqft,
+            [FromQuery(Name = "occupancy")] int? occupancy,
+            [FromQuery(Name = "amenity")] string amenity
+        )
         {
             try
             {
-                IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
+                Expression<Func<Villa, bool>> filter = v =>
+                    (string.IsNullOrEmpty(name) || v.Name.Contains(name)) &&
+                    (string.IsNullOrEmpty(details) || v.Details.Contains(details)) &&
+                    (!rate.HasValue || v.Rate == rate.Value) &&
+                    (!sqft.HasValue || v.Sqft == sqft.Value) &&
+                    (!occupancy.HasValue || v.Occupancy == occupancy.Value) &&
+                    (string.IsNullOrEmpty(amenity) || v.Amenity.Contains(amenity));
+
+                var villaList = await _dbVilla.GetAllAsync(filter);
                 _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);

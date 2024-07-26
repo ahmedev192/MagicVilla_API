@@ -32,8 +32,10 @@ namespace MagicVilla_VillaAPI.Controllers.v1
 
         [HttpGet]
         [MapToApiVersion("1.0")]
+        //[ResponseCache(Duration =30)]
+        [ResponseCache(CacheProfileName = "Default Cache")]
 
-        public async Task<ActionResult<APIResponse>> Get()
+        public async Task<ActionResult<APIResponse>> GetVillaNumbers()
         {
             try
             {
