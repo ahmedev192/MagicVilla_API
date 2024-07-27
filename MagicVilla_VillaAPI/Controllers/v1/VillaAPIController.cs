@@ -37,7 +37,9 @@ namespace MagicVilla_VillaAPI.Controllers.v1
             [FromQuery(Name = "rate")] double? rate,
             [FromQuery(Name = "sqft")] int? sqft,
             [FromQuery(Name = "occupancy")] int? occupancy,
-            [FromQuery(Name = "amenity")] string amenity
+            [FromQuery(Name = "amenity")] string amenity,
+            int pageSize = 0,
+            int pageNumber = 1
         )
         {
             try
@@ -50,7 +52,7 @@ namespace MagicVilla_VillaAPI.Controllers.v1
                     (!occupancy.HasValue || v.Occupancy == occupancy.Value) &&
                     (string.IsNullOrEmpty(amenity) || v.Amenity.Contains(amenity));
 
-                var villaList = await _dbVilla.GetAllAsync(filter);
+                var villaList = await _dbVilla.GetAllAsync(filter, pageSize: pageSize, pageNumber: pageNumber);
                 _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
